@@ -1,4 +1,4 @@
 # denizgenc.github.io
-My website
 
-Hopefully it can look cool
+This repository contains all the files used to host my website, found at
+https://denizgenc.github.io
