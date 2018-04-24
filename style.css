@@ -1,0 +1,29 @@
+@charset "utf-8";
+body,td,th {
+    background-color: #333333;
+    margin:40px auto;
+    max-width:650px;
+    line-height:1.6;
+    font-size:18px;
+	color: #EEE;
+	font-family: Georgia, "Times New Roman", Times, serif;
+    padding:0;
+}
+
+h1,h2,h3{
+    line-height:1.2}
+
+a:link {
+	color: #00A6FF;
+	text-decoration: none;
+}
+a:visited {
+	color: #8c8c8c;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
