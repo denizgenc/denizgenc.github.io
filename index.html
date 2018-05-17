@@ -11,21 +11,17 @@
 <h2>Welcome to my website!</h2>
 <p> If you want to find out what I'm working on and learning about, you've come
 to the right place!</p>
-<p> This is an early version of my website, and I will be adding more to it as
-time goes on. While you wait, please check out the following:
-<ul>
-    <li>My GitHub profile, <a href="https://www.github.com/denizgenc">denizgenc,</a>
-    with all my repos</li>
-    <li>I drew inspiration for this site <a href="http://bettermotherfuckingwebsite.com">
-    from here</a> &mdash; which means I lifted some of the source and CSS from it,
-    with my own modifications of course</li>
-</ul>
 <h2>My repositories on GitHub</h2>
 <h3>Cryptopals</h3>
 <p><a href="https://www.cryptopals.com">Cryptopals</a> is an online coding
 challenge with the aim of teaching people that the basics of cryptography.
 <a href="https://github.com/denizgenc/cryptopals/">My repo</a> contains my attempts
 at solving the set of problems.</p>
+<h3>encryption-fun</h3>
+<p><a href="https://github.com/denizgenc/encryption_fun">This repo</a> contains a
+Python script (<code>rotemake.py</code>) that takes an input file, and it into a
+"ROT file", a type of (what I believe is) a one-time pad. The specification for
+the ROT file type is provided in the file <code>ROT file spec.txt</code>.</p>
 <h3>brief-karate-set</h3>
 <p><a href="https://store.steampowered.com/app/546390/Brief_Karate_Foolish/">Brief
 Karate Foolish</a> is an independently produced fighting game, released on Steam
@@ -40,5 +36,27 @@ Pygame</a>, and I ended up with a script that did do some automation. This was
 also my first experience merging a pull request on one of my own repositories!
 There's still a lot to be desired (for example it does not have a GUI), and I
 plan to improve it a bit more in the future.</p>
+<h3>treepy</h3>
+<p>This repository is relatively basic - I wanted to make a clone of the
+<code>tree</code> program that's available on Windows, in Python. The reason for
+this is that I have a pretty large music collection on my desktop PC that I want
+to keep synchronised with my phone, and instead of using a somewhat sane solution
+like cloud storage I just locally copy files over, use <code>python treepy.py</code>
+on both my desktop and my phone, then <code>diff</code> the outputted
+<code>TREE.TXT</code> file to see what differences there are.</p>
+<p>Definitely not an optimal solution, but I made it. So I use it occasionally.</p>
+<p>One feature of this script is that it looks for a file called
+<code>EXCLUDE.TXT</code>, which tells the script to exclude certain files/folders
+from the output, so only the folders I <em>want</em> to compare get output to the
+tree.</p>
+<h2>Links and credits</h2>
+<ul>
+    <li>My GitHub profile can be found
+    <a href="https://www.github.com/denizgenc">here</a></li>
+    <li>I drew inspiration for my website from
+    <a href="http://bettermotherfuckingwebsite.com">this one</a> &mdash; which
+    means I lifted some of the source and CSS from it, with my own modifications
+    of course</li>
+</ul>
 </body>
 </html>
