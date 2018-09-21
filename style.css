@@ -7,7 +7,7 @@ body,td,th {
     font-size:18px;
 	color: #EEE;
 	font-family: Georgia, "Times New Roman", Times, serif;
-    padding:0;
+    padding:0 10px;
 }
 
 h1,h2,h3{
