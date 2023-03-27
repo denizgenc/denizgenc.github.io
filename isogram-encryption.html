@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>
+Atbash-like ciphers
+</title>
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;style.css&quot;&gt;</code></pre>
+</head>
+<h1 id="atbash-like-ciphers-with-isograms">Atbash-like ciphers with
+isograms</h1>
+<h2 id="introduction">Introduction</h2>
+<p>The first cipher I ever learned to use was the Atbash cipher, in
+primary school. I don’t remember where I heard about it, but it was
+incredibly neat how you could fold the English alphabet on itself and
+suddenly have a way of turning readable text into a garbled mess that
+was easy to turn back:</p>
+<pre><code>abcdefghijklm
+zyxwvutsrqpon</code></pre>
+<p>This morning I wondered if there were any pairs of 13 letter isograms
+which didn’t share any letters with each other that could be used for
+the same purpose (but be “easier to remember” than the last 13 letters
+of the alphabet in reverse). After realising that might not be
+realistic, I also wondered if there were any pairs of partitions of 13
+unique letters (e.g. a 6 letter word + a 7 letter word) that similarly
+didn’t share any letters with each other. Felt like a fun thing to mess
+around with.</p>
+<p>Because I’m doing this for fun, I’m not going to look up prior art
+which most definitely exists. I’m not going to focus on performance when
+it comes to the search either; I’m sure there’ll be a smart way to use
+graph theory or something to make it faster.</p>
+<h2 id="letter-isograms">13 letter isograms</h2>
+<p>We’re going to use the <a
+href="https://en.wikipedia.org/wiki/Words_(Unix)"><code>words</code></a>
+file on Linux to get a hopefully acceptable list of 13 letter words:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> egrep <span class="st">&#39;^[[:alpha:]]{13}$&#39;</span> /usr/share/dict/words <span class="op">&gt;</span> ~/13_letters.txt</span></code></pre></div>
+<p>Let’s explore this file with the Python REPL now.</p>
+<pre class="pycon"><code>&gt;&gt;&gt; with open(&quot;13_letters.txt&quot;) as f:
+...     words = [w.strip() for w in f.readlines()]
+...
+&gt;&gt;&gt; words[:10]
+[&#39;abbreviatable&#39;, &#39;abbreviations&#39;, &#39;abdominoscope&#39;, &#39;abdominoscopy&#39;, &#39;Aberdeenshire&#39;, &#39;abiogenetical&#39;, &#39;abiologically&#39;, &#39;abnormalising&#39;, &#39;abnormalities&#39;, &#39;abnormalizing&#39;]</code></pre>
+<p>We can see with <code>'Aberdeenshire'</code> that this list has
+capital letters in it, which will make it more difficult to find
+isograms. Normalise the list:</p>
+<pre class="pycon"><code>&gt;&gt;&gt; words = [w.lower() for w in words]
+&gt;&gt;&gt; words[:10]
+[&#39;abbreviatable&#39;, &#39;abbreviations&#39;, &#39;abdominoscope&#39;, &#39;abdominoscopy&#39;, &#39;aberdeenshire&#39;, &#39;abiogenetical&#39;, &#39;abiologically&#39;, &#39;abnormalising&#39;, &#39;abnormalities&#39;, &#39;abnormalizing&#39;]</code></pre>
+<p>Now to find which ones are isograms.</p>
+<pre class="pycon"><code>&gt;&gt;&gt; from collections import defaultdict
+&gt;&gt;&gt; unique_count = defaultdict(list)
+&gt;&gt;&gt; for word in words:
+...     unique_count[len(set(word))].append(word)
+...
+&gt;&gt;&gt; unique_count[13]
+[&#39;amphigenously&#39;, &#39;brachydontism&#39;, &#39;bridgehampton&#39;, &#39;chromeplating&#39;, &#39;consumptively&#39;, &#39;copyrightable&#39;, &#39;courtezanship&#39;, &#39;dentosurgical&#39;, &#39;documentarily&#39;, &#39;embryoplastic&#39;, &#39;endolymphatic&#39;, &#39;forecastingly&#39;, &#39;hemidactylous&#39;, &#39;hydromagnetic&#39;, &#39;hypsometrical&#39;, &#39;lycanthropies&#39;, &#39;lycanthropize&#39;, &#39;metalworkings&#39;, &#39;misconjugated&#39;, &#39;multibranched&#39;, &#39;musicotherapy&#39;, &#39;mynpachtbrief&#39;, &#39;objurgatively&#39;, &#39;philydraceous&#39;, &#39;physicomental&#39;, &#39;pneumogastric&#39;, &#39;postneuralgic&#39;, &#39;preblockading&#39;, &#39;salpingectomy&#39;, &#39;semivoluntary&#39;, &#39;submetaphoric&#39;, &#39;subordinately&#39;, &#39;sulphocyanide&#39;, &#39;sulphozincate&#39;, &#39;troublemaking&#39;, &#39;unatmospheric&#39;, &#39;unblameworthy&#39;, &#39;uncompahgrite&#39;, &#39;uncopyrighted&#39;, &#39;undisprovable&#39;, &#39;unexorcisably&#39;, &#39;unmaledictory&#39;, &#39;unpredictably&#39;, &#39;unproblematic&#39;, &#39;unsympathized&#39;]</code></pre>
+<p>Will we get a disjoint pair?</p>
+<pre class="pycon"><code>&gt;&gt;&gt; for i, word in enumerate(unique_count[13]):
+...     for word2 in unique_count[13][i+1:]:
+...             if set(word).isdisjoint(set(word2)):
+...                     print(f&quot;disjoint pair: {word} {word2}&quot;)
+...
+&gt;&gt;&gt;</code></pre>
+Damn. We’ll need to try using partitions of 13 letters next, which is
+harder. I’m getting pretty hungry, so I’ll do this part later.
+</html>
