@@ -13,6 +13,10 @@ body,td,th {
 h1,h2,h3{
     line-height:1.2}
 
+pre,code{
+    background-color: #1c1c1c;
+}
+
 a:link {
 	color: #00A6FF;
 	text-decoration: none;
