@@ -1,0 +1,10 @@
+# For use with Jekyll
+
+# The following plugins are here to replicate (some) of GitHub Pages' defaults, which are documented
+# here:
+# https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll#plugins
+plugins:
+  - jekyll-optional-front-matter # Forces md files to be rendered as html, even if they don't have front matter
+  - jekyll-default-layout # uses the default layout for all pages that don't have a layout defined
+  - jekyll-relative-links # [foo](foo.md) -> <a href=foo.html>foo</a>
+  - jekyll-titles-from-headings # Sets page title from first h1 tag, if one is not defined
