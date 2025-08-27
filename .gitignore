@@ -1,0 +1,5 @@
+# Jekyll output from local dev
+_site/**
+
+# I don't need to commit the lock file
+Gemfile.lock
