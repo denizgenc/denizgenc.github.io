@@ -1,0 +1,5 @@
+plugins:
+  - jekyll-optional-front-matter
+  - jekyll-default-layout
+  - jekyll-relative-links
+  - jekyll-titles-from-headings
